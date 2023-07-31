@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Count That Word</title>
+</head>
+
+<body>
+  <textarea name="" id="" cols="30" rows="10" placeholder="Write Sentence"></textarea>
+  <br>
+  <input type="text" placeholder="Enter a word">
+  <br>
+  <button type="submit">Click</button>
+  <br>
+  <p></p>
+
+  <script>
+    //   We are given a function countWordOccurrences that takes two string parameters sentence and word.
+    //   "Sentence" is a string made up of multiple words separated by spaces.
+    //   We have to find how many times 'word' occurs in the given 'sentence'.
+    //   The 'word' should be an exact match.
+
+    //   Note: The case (uppercase/lowercase) of the letters in the word does NOT matter.
+
+    // EXAMPLE:
+    // Sample Input:
+    // Hello welcome to newton school. hello
+    // Hello
+    // Sample Output:
+    // 2
+
+    // Sample Input:
+    // Hello welcome to newton school hello.
+    // hello
+    // Sample Output:
+    // 1
+    // Because here we also have a full stop with hello.
+    
+    let sentence = document.querySelector("textarea");
+    let input = document.querySelector("input");
+    let btn = document.querySelector("button");
+    let show1 = document.querySelector("p");
+
+    btn.onclick = () => {
+      let x = sentence.value;
+      let y = input.value;
+      sentence.value = "";
+      input.value = "";
+      let result = countWordOccurrences(x, y);
+      show1.innerHTML = "The Word " + y + " occur " + result + " times in the entered sentence";
+    }
+
+    function countWordOccurrences(sentence, word) {
+      let sec = sentence.toLowerCase();
+      let wor = word.toLowerCase();
+      let space = sec.split(" ");
+      let count = 0;
+      for (let i = 0; i < space.length; i++) {
+        let checkword = space[i];
+        if (checkword.endsWith(".")) {
+          checkword = "";
+        }
+        else {
+          if (checkword == wor) {
+            count++;
+          }
+        }
+      }
+      return count;
+    }
+  </script>
+</body>
+
+</html>
